@@ -21,4 +21,5 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
                 .getResultList();
         return resultList;
     }
+
 }

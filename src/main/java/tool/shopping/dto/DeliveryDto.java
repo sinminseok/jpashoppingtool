@@ -2,17 +2,20 @@ package tool.shopping.dto;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import tool.shopping.entity.Delivery;
 import tool.shopping.entity.DeliveryStatus;
 
-@Data
+@Getter
+@NoArgsConstructor
 public class DeliveryDto {
     private Long id;
     private DeliveryStatus status;
     private String address;
 
-    public DeliveryDto(Long id,DeliveryStatus status,String address){
-        this.id = id;
+    public DeliveryDto(DeliveryStatus status,String address){
+
         this.status = status;
         this.address = address;
     }

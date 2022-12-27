@@ -2,33 +2,23 @@ package tool.shopping.dto;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import tool.shopping.entity.CartItem;
+import tool.shopping.entity.Item;
 import tool.shopping.entity.Member;
 
-@Data
+@Getter
+@NoArgsConstructor
 public class CartItemDto {
 
     private Long id;
-    private int count;
-    private String name;
-    private int price;
-    private Member member;
+    private MemberDto member;
+    private ItemDto item;
 
-    public CartItemDto(Long id,int count,String name,int price,Member member){
-        this.id =id;
-        this.count =count;
-        this.name = name;
-        this.price = price;
+    public CartItemDto(MemberDto member,ItemDto item){
         this.member = member;
+        this.item = item;
     }
-
-    public CartItemDto(CartItem cartItem){
-        this.id =cartItem.getId();
-        this.count =cartItem.getCount();
-        this.name = cartItem.getName();
-        this.price = cartItem.getPrice();
-        this.member = cartItem.getMember();
-    }
-
 
 }

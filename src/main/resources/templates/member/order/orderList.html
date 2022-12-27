@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<body>
+<div class="container">
+    <div th:replace="fragments/member/bodyHeader :: bodyHeader"/>
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>주문일자</th>
+                <th>배송지</th>
+                <th>주문상품</th>
+                <th>주문가격</th>
+                <th>주문상태</th>
+            </tr>
+            </thead>
+            <!--            <span th:if="${booleanTest}">참입니다.</span>-->
+            <tbody>
+
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${order.orderdate}"></td>
+                <td th:text="${order.delivery.address}"></td>
+
+
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+</html>

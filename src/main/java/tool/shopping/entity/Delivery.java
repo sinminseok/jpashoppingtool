@@ -14,6 +14,9 @@ public class Delivery extends BaseTimeEntity{
     @Column(name = "delivery_id")
     private Long id;
 
+    @OneToOne(mappedBy = "delivery",fetch = FetchType.LAZY,cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private Order order;
+
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 

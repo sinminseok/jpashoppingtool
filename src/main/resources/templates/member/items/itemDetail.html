@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/member/bodyHeader :: bodyHeader"/>
+    <div>
+        <div>
+            <form th:action="@{/items}"  class="form-inline" method="GET">
+                <div class="form-group mb-2">
+                    <input type="text" name="keyword" class="form- control" placeholder="상품명검색"/>
+                </div>
+                <div class="form-group mx-sm-1 mb-2">
+
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">검색</button> </form>
+        </div>
+        <table class="table table-striped">
+            <thead> <tr>
+                <th>#</th> <th>상품명</th> <th>가격</th> <th>재고수량</th> <th></th>
+            </tr>
+            </thead>
+            <!--            <span th:if="${booleanTest}">참입니다.</span>-->
+            <tbody>
+
+
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.price}"></td>
+                <td th:text="${item.stock_quantity}"></td>
+
+                <td>
+                    <form method="POST" th:action="@{/member/cartitem/add/{itemId} (itemId=${item.id})}" class="btn btn-primary" role="button" >
+                        <button type="submit" name="submit" value="value" class="link-button">장바구니 담기</button>
+                    </form>
+                </td>
+
+
+
+                <td>
+                    <a th:href="@{/member/order/{id} (id=${item.id})}" class="btn btn-primary" role="button">주문하기</a>
+                </td>
+            </tbody>
+
+        </table>
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+</html>

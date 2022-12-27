@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <head th:replace="fragments/header :: header"/>
+  <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+  <br/>
+  <h1>로그인</h1>
+
+  <form action="/login" method="post">
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">ID</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" name="username" placeholder="Username">
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="password" name="password" placeholder="Password">
+      </div>
+    </div>
+
+    <br/>
+    <button  type="submit" class="btn btn-primary">로그인</button>
+  </form>
+  <br/>
+
+
+  <a href="/join">아직 계정이 없으신가요?</a>
+  <br/>
+</div>
+</body>
+</html>

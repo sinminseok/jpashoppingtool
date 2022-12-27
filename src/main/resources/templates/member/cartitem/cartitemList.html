@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<body>
+<div class="container">
+    <div th:replace="fragments/member/bodyHeader :: bodyHeader"/>
+    <div>
+        <h1>장바구니</h1>
+        <div>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>상품명</th>
+                    <th>가격</th>
+
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="cart_items : ${cart_items}">
+                    <td th:text="${cart_items.id}"></td>
+                    <td th:text="${cart_items.item.name}"></td>
+                    <td th:text="${cart_items.item.price}"></td>
+
+                    <td>
+                        <form method="post" th:action="@{/member/cartitem/remove/{cartitem_id} (cartitem_id=${cart_items.id})}" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary">장바구니에서 제거</button>
+                        </form>
+                    </td>
+                </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+</html>

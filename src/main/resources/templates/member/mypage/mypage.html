@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/member/bodyHeader :: bodyHeader"/>
+    <table class="table table-striped">
+        <a href="/member/mypage/update">정보수정</a>
+        <thead> <tr>
+            <th>name</th> <th>Email</th> <th>Role</th> <th></th>
+        </tr>
+        </thead>
+        <!--            <span th:if="${booleanTest}">참입니다.</span>-->
+        <tbody>
+
+        <td th:text="${member.name}"></td>
+        <td th:text="${member.email}"></td>
+        <td th:text="${member.role}"></td>
+
+        </tbody>
+
+    </table>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>

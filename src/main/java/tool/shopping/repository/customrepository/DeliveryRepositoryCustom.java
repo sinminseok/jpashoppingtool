@@ -12,7 +12,7 @@ import java.util.List;
 public interface DeliveryRepositoryCustom {
 
     //Delivery findby Member
-    List<Delivery> findByMember(Order order);
+    List<Delivery> findByOrder(Order order);
 
 
 }

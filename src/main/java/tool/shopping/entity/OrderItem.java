@@ -17,6 +17,7 @@ public class OrderItem extends BaseTimeEntity{
     private int count;
     private int price;
 
+    //cascade = CascadeType.PERSIST 삭제
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
