@@ -59,19 +59,15 @@ public class MemberServiceTest {
         List<MemberDto> findall = memberService.findall();
         Assertions.assertThat(findall.size()).isEqualTo(2);
     }
-
+    
     @Test
     public void 회원정보수정() throws Exception {
-        List<MemberDto> findall = memberService.findall();
-        System.out.println("findall.get(7) = "+ findall.get(7).getName());
-
-
-        Member map = appConfig.modelMapper().map(findall.get(7), Member.class);
-
-        map.update("gg","gg",map);
-        memberRepository.save(map);
-
+        MemberDto findMember = memberService.findByName("ggg");
+        System.out.println("find = " + findMember.getName());
+        memberService.update("rrr","update@naver.com",findMember);
     }
+
+
 
 
 

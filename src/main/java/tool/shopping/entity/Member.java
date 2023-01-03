@@ -1,6 +1,7 @@
 package tool.shopping.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,6 +31,7 @@ public class Member extends BaseTimeEntity {
     private String email;
 
     //Member와Order는 1:N관계
+    @JsonIgnore
     @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Order> orders = new ArrayList<Order>();
 
@@ -52,6 +54,7 @@ public class Member extends BaseTimeEntity {
         this.email = email;
     }
 
+    //회원정보 수정시 사용되는 method
     public void update(String name,String email,Member member) {
         this.id = member.id;
         this.name = name;

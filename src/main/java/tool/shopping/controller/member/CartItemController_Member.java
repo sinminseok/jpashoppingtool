@@ -14,6 +14,7 @@ import tool.shopping.entity.Item;
 import tool.shopping.service.CartItemService;
 import tool.shopping.service.ItemService;
 import tool.shopping.service.MemberService;
+import tool.shopping.service.OrderService;
 
 import java.security.Principal;
 import java.util.List;
@@ -25,6 +26,7 @@ public class CartItemController_Member {
     private final CartItemService cartItemService;
     private final MemberService memberService;
     private final ItemService itemService;
+    private final OrderService orderService;
 
     //장바구니 조회 controller
     @GetMapping("/member/cartitem")
@@ -42,7 +44,7 @@ public class CartItemController_Member {
         //int count, String name, int price, Member member, Item item
         MemberDto memberDto = memberService.findByName(principal.getName());
         ItemDto itemDto = itemService.findByID(itemId);
-        CartItemDto cartItemDto = new CartItemDto(memberDto,itemDto);
+        CartItemDto cartItemDto = new CartItemDto(memberDto,itemDto,1);
         cartItemService.save(cartItemDto);
         return "redirect:/";
 
@@ -50,9 +52,13 @@ public class CartItemController_Member {
 
     @PostMapping("/member/cartitem/remove/{cartitem_id}")
     public String remove(@PathVariable("cartitem_id") Long cartitem_id){
-        System.out.println("LOGG");
         cartItemService.delete(cartitem_id);
         return "redirect:/";
+    }
+    
+    @GetMapping("/member/cartitem/order")
+    public String order(Principal principal,Model model){
+        return "member/cartitem/order";
     }
 
 

@@ -18,7 +18,7 @@ public class CartItemRepositoryImpl implements CartItemRepositoryCustom {
 
     @Override
     public List<CartItem> findAllByMember(Member member) {
-        String query  = "select ci from CartItem ci where ci.member.id = :memberid";
+        String query  = "select ci from CartItem ci join fetch ci.item where ci.member.id = :memberid";
         List resultList = em.createQuery(query).setParameter("memberid",member.getId()) .getResultList();
         return resultList;
     }

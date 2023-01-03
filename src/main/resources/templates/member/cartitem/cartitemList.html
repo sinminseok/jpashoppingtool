@@ -18,7 +18,10 @@
                     <th></th>
                 </tr>
                 </thead>
+
                 <tbody>
+
+
                 <tr th:each="cart_items : ${cart_items}">
                     <td th:text="${cart_items.id}"></td>
                     <td th:text="${cart_items.item.name}"></td>
@@ -32,6 +35,10 @@
                 </tr>
 
                 </tbody>
+
+                <form method="get" th:action="@{/member/cartitem/order}" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary">장바구니 상품 주문</button>
+                </form>
 
             </table>
         </div>

@@ -1,6 +1,7 @@
 package tool.shopping.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,15 +26,18 @@ public class Order extends BaseTimeEntity{
 
     //Order Member 연관관계
     //연관관계 주인에서 지연로딩 설정(필요할때만 조회)
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
     //Order Delivery 연관관계
     //연관관계 주인에서 지연로딩 설정(필요할때만 조회)
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
+
 
     @OneToMany(mappedBy = "order",cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<OrderItem> orderItems = new ArrayList<OrderItem>();

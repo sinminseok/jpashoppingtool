@@ -1,6 +1,7 @@
 package tool.shopping.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import tool.shopping.dto.ItemDto;
@@ -25,9 +26,11 @@ public class Item extends BaseEntity{
 
     private int stock_quantity;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "item",cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, orphanRemoval = true)
     private List<CartItem> cartItem = new ArrayList<CartItem>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "item",cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, orphanRemoval = true)
     private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 

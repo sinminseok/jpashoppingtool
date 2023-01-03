@@ -49,7 +49,6 @@ public class IndexController {
 
     @GetMapping(value = "/user/denied")
     public String denied() {
-        System.out.println("FASF");
         return "account/denied";
     }
 

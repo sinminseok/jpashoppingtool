@@ -1,6 +1,7 @@
 package tool.shopping.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class OrderItem extends BaseTimeEntity{
     private int price;
 
     //cascade = CascadeType.PERSIST 삭제
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;

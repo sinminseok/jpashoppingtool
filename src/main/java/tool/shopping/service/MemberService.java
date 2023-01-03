@@ -36,10 +36,11 @@ public class MemberService {
     }
 
     @Transactional
-    public Long update(String naem,String email,MemberDto memberDto){
-        Member member = appConfig.modelMapper().map(memberDto, Member.class);
-        member.update(naem,email,member);
-        memberRepository.save(member);
+    public Long update(String name,String email,MemberDto memberDto){
+        //변경감지를 통한 회원정보수정
+        List<Member> byName = memberRepository.findByName(memberDto.getName());
+        Member member = appConfig.modelMapper().map(byName.get(0), Member.class);
+        member.update(name,email,member);
         return member.getId();
     }
     
@@ -82,14 +83,5 @@ public class MemberService {
                 .collect(toList());
         return result;
     }
-
-//    public void update(){
-//        memberRepository.
-//    }
-
-
-    
-
-
 
 }

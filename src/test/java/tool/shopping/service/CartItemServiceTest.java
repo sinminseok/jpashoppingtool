@@ -46,7 +46,7 @@ public class CartItemServiceTest {
         //int count, String name, int price, Member member, Item item
         MemberDto memberDto = memberService.findByName("33");
 
-        CartItemDto cartItemDto = new CartItemDto(memberDto,byID);
+        CartItemDto cartItemDto = new CartItemDto(memberDto,byID,1);
         cartItemService.save(cartItemDto);
     }
 
